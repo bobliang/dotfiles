@@ -6,7 +6,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'valloric/youcompleteme'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'dracula/vim', { 'name': 'dracula' }
 call vundle#end()            " required
@@ -162,15 +161,10 @@ set noruler
 set laststatus=0
 set noshowcmd
 set cmdheight=2
-" noremap e k
-" noremap n j
-" noremap k n
-" noremap K N
-" noremap N J
-" noremap j y
-" noremap l u
-" noremap i l
-" noremap u i
+noremap k j
+noremap K J
+noremap j k
+noremap J K
 " set clipboard=unnamedplus
 
 source ~/cscope_maps.vim

@@ -1,21 +1,24 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/cb/home/robertl/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10
-
-export PATH="$HOME/bin:$HOME/ws/monolith/obj/bin:$PATH"
-export MODULEPATH="/cb/toolchains/buildroot/modulefiles/:$HOME/ws/monolith/flow/modulefiles:$MODULEPATH"
-export PYTEST_ADDOPTS="--workdir-root=/net/robertl-dev/spare/ --keep-workdir"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,6 +80,7 @@ export PYTEST_ADDOPTS="--workdir-root=/net/robertl-dev/spare/ --keep-workdir"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
+ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -106,10 +110,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export TERM="xterm-256color"
+export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
-alias mcm='make clean && csub -j4 make -j4'
-alias mm='csub -j4 make -j4'
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
-GITTOP=/net/robertl-dev/srv/nfs/robertl-data/ws/monolith/ && source /net/robertl-dev/srv/nfs/robertl-data/ws/monolith//flow/devenv.sh && devenv_enter
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
